@@ -1,0 +1,10 @@
+select * from telco_customer_churn limit 10;
+select count(*) as total_customers from telco_customer_churn;
+select "Churn Label", count(*) as total, round(count(*) * 100.0/ sum(count(*)) over(),2) as percentage from telco_customer_churn group by "Churn Label";
+select "State", "Churn Label",count(*) as total from telco_customer_churn GROUP BY "State", "Churn Label" ORDER BY total DESC;
+select "Contract", "Churn Label",count(*) as total from telco_customer_churn GROUP BY "Contract", "Churn Label" ORDER BY "Contract";
+select "Churn Label", round(AVG("Monthly Charges"):: numeric,2) as avg_monthly, round(avg("Total0Charges")::numeric,2) as avg_total from telco_customer_churn group by "Churn Label";
+select case when "Tenure Months" <= 12 then '0-12 months' when "Tenure Months" <= 24 then '13-24 months' when "Tenure Months" <= 48 then '25-48 months' else '48+ months' end as tenure_group, "Churn Label", count(*) as total from telco_customer_churn group by tenure_group, "Churn Label" order by tenure_group;
+ select count(*) filter (where "Churn Label" is null) as null_churn, count(*) filter (where "Contract" is null) as nul_contract, count(*) filter (where "Monthly Charges" is null) as null_monthly from telco_customer_churn;
+select "CustomerID", COUNT(*) from TELCO_CUSTOMER_CHURN group by "CustomerID" having COUNT(*)>1;
+select* from telco_customer_churn;
