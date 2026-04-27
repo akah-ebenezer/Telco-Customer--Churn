@@ -1,47 +1,60 @@
-#Telco Customer Churn Analysis
+# 📊 Telco Customer Churn Analysis
 
-Created by: Akah Ebenezer Chukwuemeka
-Tools: PostgreSQL | Python | Power BI
-Dataset: 7,043 telecom customers | 33 features
+**Created by:** Akah Ebenezer Chukwuemeka  
+**Tools:** PostgreSQL | Python | Power BI  
+**Dataset:** 7,043 telecom customers | 33 features
 
-##Project Overview
+---
+
+## 📌 Project Overview
 
 Customer churn is one of the most critical challenges facing telecom companies. This end-to-end data analytics project analyzes a telco customer dataset to identify the key drivers of churn, uncover patterns, and present actionable business insights through an interactive Power BI dashboard.
 
-##Business Questions Answered
+---
 
-What percentage of customers churned?
-Which contract type has the highest churn rate?
-Which payment method is most associated with churn?
-Does internet service type influence churn?
-Do churned customers pay higher monthly charges?
+## 🎯 Business Questions Answered
 
-##Key Insights 
+- What percentage of customers churned?
+- Which contract type has the highest churn rate?
+- Which payment method is most associated with churn?
+- Does internet service type influence churn?
+- Do churned customers pay higher monthly charges?
 
-###Insight                                    Finding
-Overall Churn Rate                    26.54% of customers churned
-Highest Risk Contract          Month-to-month customers churn the most (1,655 churned)
-Highest Risk Payment           Electronic check users have the highest churn (1,071 churned)
-Highest Risk Service            Fiber optic internet customers churn more than DSL
-Monthly Charges                Churned customers pay higher monthly charges on average
-Retained Customers              5,174 (73.46%) customers were successfully retained
+---
 
-##Tools used
+## 🔍 Key Insights
 
-##Tool                                         Purpose
-PostgreSQL / DBeaver              Data storage, exploration & SQL querying
-Python / Jupyter Notebook          Data cleaning & exploratory visualization
-Pandas                               Data manipulation and null handling
-Matplotlib & Seaborn                  Python visualizations
-Power BI                               Interactive dashboard creation
-DAX                                     Custom measures and calculations
+| Insight | Finding |
+|---|---|
+| Overall Churn Rate | **26.54%** of customers churned |
+| Highest Risk Contract | **Month-to-month** customers churn the most (1,655 churned) |
+| Highest Risk Payment | **Electronic check** users have the highest churn (1,071 churned) |
+| Highest Risk Service | **Fiber optic** internet customers churn more than DSL |
+| Monthly Charges | Churned customers pay **higher monthly charges** on average |
+| Retained Customers | **5,174 (73.46%)** customers were successfully retained |
 
-##Repository Structure
+---
 
-telco-customer-churn
+## 🛠️ Tools & Technologies
+
+| Tool | Purpose |
+|---|---|
+| **PostgreSQL / DBeaver** | Data storage, exploration & SQL querying |
+| **Python / Jupyter Notebook** | Data cleaning & exploratory visualization |
+| **Pandas** | Data manipulation and null handling |
+| **Matplotlib & Seaborn** | Python visualizations |
+| **Power BI** | Interactive dashboard creation |
+| **DAX** | Custom measures and calculations |
+
+---
+
+## 📁 Repository Structure
+
+```
+telco-customer-churn/
 │
 ├── data/
-│   └── telco_churn_cleaned.csv       
+│   └── telco_churn_cleaned.csv       # Cleaned dataset
 │
 ├── sql/
 │   └── telco_churn_queries.sql       # All SQL queries used
@@ -54,39 +67,47 @@ telco-customer-churn
 │   └── telco_customer_churn.pdf      # Dashboard export (PDF)
 │
 └── README.md
+```
 
-##Project Workflow
+---
 
+## 🔄 Project Workflow
+
+```
 Raw Data → PostgreSQL (Explore) → Python (Clean) → Power BI (Visualize)
+```
 
-##Step 1 — SQL Exploration (PostgreSQL/DBeaver)
+### Step 1 — SQL Exploration (PostgreSQL/DBeaver)
+- Loaded dataset into PostgreSQL
+- Ran exploratory queries: churn distribution, contract type analysis, tenure grouping
+- Checked for NULL values and duplicate CustomerIDs
+- Confirmed data integrity before Python cleaning
 
-Loaded dataset into PostgreSQL
-Ran exploratory queries: churn distribution, contract type analysis, tenure grouping
-Checked for NULL values and duplicate CustomerIDs
-Confirmed data integrity before Python cleaning
+### Step 2 — Data Cleaning (Python/Jupyter Notebook)
+- Connected Python directly to PostgreSQL using `psycopg2`
+- Loaded full dataset (7,043 rows × 33 columns) into Pandas DataFrame
+- Filled 1 NULL value in `Churn Reason` column with `'Unknown'`
+- Dropped unnecessary columns: `Count`, `Lat Long`, `Latitude`, `Longitude`
+- Verified no remaining nulls across all columns
+- Exported cleaned data as `telco_churn_cleaned.csv`
 
-##Step 2 — Data Cleaning (Python/Jupyter Notebook)
+### Step 3 — Dashboard (Power BI)
+- Imported cleaned CSV into Power BI
+- Created 4 DAX measures: Total Customers, Total Churned, Total Retained, Churn Rate
+- Built 6 visuals: KPI Cards, Donut chart, 3 Bar charts, Column chart
+- Added Gender slicer for interactive filtering
 
-Loaded full dataset (7,043 rows × 33 columns) into Pandas DataFrame
-Filled 1 NULL value in Churn Reason column with 'Unknown'
-Dropped unnecessary columns: Count, Lat Long, Latitude, Longitude
-Verified no remaining nulls across all columns
-Exported cleaned data as telco_churn_cleaned.csv
+---
 
-##Step 3 — Dashboard (Power BI)
+## 📊 Dashboard Preview
 
-Imported cleaned CSV into Power BI
-Created 4 DAX measures: Total Customers, Total Churned, Total Retained, Churn Rate
-Built 6 visuals: KPI Cards, Donut chart, 3 Bar charts, Column chart
-Added Gender slicer for interactive filtering
+![Telco Customer Churn Dashboard](dashboard/telco_customer_churn.pdf)
 
-##Dashboard Preview
+---
 
-![Telco Customer Churn Dashboard](Telco-customer-churn-dashboard.png)
+## 💡 DAX Measures Used
 
-##DAX Measures Used
-
+```dax
 Total Customers = COUNTROWS(telco_churn_cleaned)
 
 Total Churned = 
@@ -102,13 +123,17 @@ COUNTROWS(
 )
 
 Churn Rate = DIVIDE([Total Churned], [Total Customers], 0)
+```
 
-##SQL Queries Highlights
+---
 
+## 📈 SQL Queries Highlights
+
+```sql
 -- Churn Distribution
 SELECT "Churn Label", 
        COUNT(*) AS total,
-       ROUND(COUNT() * 100.0 / SUM(COUNT()) OVER(), 2) AS percentage
+       ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER(), 2) AS percentage
 FROM telco_customer_churn
 GROUP BY "Churn Label";
 
@@ -130,19 +155,43 @@ SELECT
 FROM telco_customer_churn
 GROUP BY tenure_group, "Churn Label"
 ORDER BY tenure_group;
+```
 
-##How to Use This Project
+---
 
-Clone this repository
-Open telco_churn_queries.sql in PostgreSQL/DBeaver to explore raw data
-Open telco_customer_churn.ipynb in Jupyter Notebook to view cleaning steps
-Open telco_customer_churn.pbix in Power BI Desktop to interact with the dashboard
+## 🚀 How to Use This Project
 
-##About the Author
+1. Clone this repository
+2. Open `telco_churn_queries.sql` in PostgreSQL/DBeaver to explore raw data
+3. Open `telco_customer_churn.ipynb` in Jupyter Notebook to view cleaning steps
+4. Open `telco_customer_churn.pbix` in Power BI Desktop to interact with the dashboard
 
-Akah Ebenezer Chukwuemeka
-Data Analyst | Founder of Mekuzhandy Tech Academy
+---
+
+## 👤 About the Author
+
+**Akah Ebenezer Chukwuemeka**
+
+Data Analyst | Sales Supervisor at Multipro | Founder of Mekuzhandy Tech Academy
+
+Passionate about turning raw data into actionable business insights. Skilled in SQL, Python and Power BI with a background in Library and Information Science.
+
+📧 Connect with me on [LinkedIn](your-linkedin-url-here)
+
+🌐 Visit my [GitHub Portfolio](your-github-url-here)
+
+---
+
+*This project is part of my data analytics portfolio demonstrating end-to-end analytical skills.* About the Author
+
+**Akah Ebenezer Chukwuemeka**  
+Data Analyst | Sales Supervisor at Multipro | Founder of Mekuzhandy Tech Academy
+
 Passionate about turning raw data into actionable business insights. Skilled in SQL, Python, and Power BI with a background in Library and Information Science.
-📧 https://www.linkedin.com/in/akah-ebenezer-349a56219?utm_source=share_via&utm_content=profile&utm_medium=member_android
-🌐 https://github.com/akah-ebenezer
 
+📧 Connect with me on LinkedIn  
+🌐 GitHub Portfolio
+
+---
+
+*This project is part of my data analytics portfolio demonstrating end-to-end analytical skills.*
