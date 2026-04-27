@@ -173,7 +173,7 @@ ORDER BY tenure_group;
 
 Data Analyst || Founder of Mekuzhandy Tech Academy
 
-Passionate about turning raw data into actionable business insights. Skilled in SQL, Python and Power BI with a background in Library and Information Science.
+Passionate about turning raw data into actionable business insights. Skilled in SQL, Python, Power BI, Tableau and Microsoft Excel with a background in Library and Information Science.
 
 📧 Connect with me on [LinkedIn](https://www.linkedin.com/in/akah-ebenezer-349a56219?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 
@@ -181,10 +181,7 @@ Passionate about turning raw data into actionable business insights. Skilled in 
 
 ---
 
-*This project is part of my data analytics portfolio demonstrating end-to-end analytical skills.* About the Author
+*This project is part of my data analytics portfolio demonstrating end-to-end analytical skills.
 
-**Akah Ebenezer Chukwuemeka**  
-Data Analyst || Founder of Mekuzhandy Tech Academy
 
-Passionate about turning raw data into actionable business insights. Skilled in SQL, Python, and Power BI with a background in Library and Information Science.
 
