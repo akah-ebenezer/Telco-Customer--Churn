@@ -1,4 +1,4 @@
-# 📊 Telco Customer Churn Analysis
+#  Telco Customer Churn Analysis
 
 **Created by:** Akah Ebenezer Chukwuemeka  
 **Tools:** PostgreSQL | Python | Power BI  
@@ -6,13 +6,13 @@
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 Customer churn is one of the most critical challenges facing telecom companies. This end-to-end data analytics project analyzes a telco customer dataset to identify the key drivers of churn, uncover patterns, and present actionable business insights through an interactive Power BI dashboard.
 
 ---
 
-## 🎯 Business Questions Answered
+##  Business Questions Answered
 
 - What percentage of customers churned?
 - Which contract type has the highest churn rate?
@@ -22,7 +22,7 @@ Customer churn is one of the most critical challenges facing telecom companies. 
 
 ---
 
-## 🔍 Key Insights
+##  Key Insights
 
 | Insight | Finding |
 |---|---|
@@ -35,7 +35,7 @@ Customer churn is one of the most critical challenges facing telecom companies. 
 
 ---
 
-## 🛠️ Tools & Technologies
+##  Tools used
 
 | Tool | Purpose |
 |---|---|
@@ -48,7 +48,7 @@ Customer churn is one of the most critical challenges facing telecom companies. 
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 telco-customer-churn/
@@ -71,7 +71,7 @@ telco-customer-churn/
 
 ---
 
-## 🔄 Project Workflow
+##  Project Workflow
 
 ```
 Raw Data → PostgreSQL (Explore) → Python (Clean) → Power BI (Visualize)
@@ -84,7 +84,6 @@ Raw Data → PostgreSQL (Explore) → Python (Clean) → Power BI (Visualize)
 - Confirmed data integrity before Python cleaning
 
 ### Step 2 — Data Cleaning (Python/Jupyter Notebook)
-- Connected Python directly to PostgreSQL using `psycopg2`
 - Loaded full dataset (7,043 rows × 33 columns) into Pandas DataFrame
 - Filled 1 NULL value in `Churn Reason` column with `'Unknown'`
 - Dropped unnecessary columns: `Count`, `Lat Long`, `Latitude`, `Longitude`
@@ -99,13 +98,13 @@ Raw Data → PostgreSQL (Explore) → Python (Clean) → Power BI (Visualize)
 
 ---
 
-## 📊 Dashboard Preview
+##  Dashboard Preview
 
-![Telco Customer Churn Dashboard](dashboard/telco_customer_churn.pdf)
+![Telco Customer Churn Dashboard](Telco-customer-churn-dashboard.png)
 
 ---
 
-## 💡 DAX Measures Used
+##  DAX Measures Used
 
 ```dax
 Total Customers = COUNTROWS(telco_churn_cleaned)
@@ -127,7 +126,7 @@ Churn Rate = DIVIDE([Total Churned], [Total Customers], 0)
 
 ---
 
-## 📈 SQL Queries Highlights
+##  SQL Queries Highlights
 
 ```sql
 -- Churn Distribution
@@ -159,7 +158,7 @@ ORDER BY tenure_group;
 
 ---
 
-## 🚀 How to Use This Project
+##  How to Use This Project
 
 1. Clone this repository
 2. Open `telco_churn_queries.sql` in PostgreSQL/DBeaver to explore raw data
@@ -168,30 +167,24 @@ ORDER BY tenure_group;
 
 ---
 
-## 👤 About the Author
+##  About the Author
 
 **Akah Ebenezer Chukwuemeka**
 
-Data Analyst | Sales Supervisor at Multipro | Founder of Mekuzhandy Tech Academy
+Data Analyst || Founder of Mekuzhandy Tech Academy
 
 Passionate about turning raw data into actionable business insights. Skilled in SQL, Python and Power BI with a background in Library and Information Science.
 
-📧 Connect with me on [LinkedIn](your-linkedin-url-here)
+📧 Connect with me on [LinkedIn](https://www.linkedin.com/in/akah-ebenezer-349a56219?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 
-🌐 Visit my [GitHub Portfolio](your-github-url-here)
+🌐 Visit my [GitHub Portfolio](https://github.com/akah-ebenezer)
 
 ---
 
 *This project is part of my data analytics portfolio demonstrating end-to-end analytical skills.* About the Author
 
 **Akah Ebenezer Chukwuemeka**  
-Data Analyst | Sales Supervisor at Multipro | Founder of Mekuzhandy Tech Academy
+Data Analyst || Founder of Mekuzhandy Tech Academy
 
 Passionate about turning raw data into actionable business insights. Skilled in SQL, Python, and Power BI with a background in Library and Information Science.
 
-📧 Connect with me on LinkedIn  
-🌐 GitHub Portfolio
-
----
-
-*This project is part of my data analytics portfolio demonstrating end-to-end analytical skills.*
